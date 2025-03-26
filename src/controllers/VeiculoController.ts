@@ -18,3 +18,18 @@ export const cadastrarVeiculo = async (req: Request, res: Response): Promise<voi
         res.status(500).json({message: "Server error", error});
     }
 };
+
+export const listarVeiculos = async (req: Request, res: Response): Promise<void> => {
+    try{
+        const veiculos = await veiculoRepository.find();
+
+        if(veiculos.length === 0) {
+            res.status(404).json({message: "Nenhum veiculo cadastrado"});
+            return
+        }
+
+        res.status(200).json(veiculos);
+    } catch (error){
+        res.status(500).json({message: "Server error", error});
+    }
+};

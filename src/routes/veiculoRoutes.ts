@@ -1,9 +1,10 @@
 import { Router } from "express";
-import { register } from "module";
-import { cadastrarVeiculo } from "../controllers/VeiculoController";
+import { cadastrarVeiculo, listarVeiculos } from "../controllers/VeiculoController";
 
 const router = Router();
 
 router.post("/veiculos", cadastrarVeiculo);
+
+router.get("/veiculos", listarVeiculos);
 
 export default router;
