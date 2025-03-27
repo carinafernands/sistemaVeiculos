@@ -47,3 +47,21 @@ export const buscarFuncionario = async (req: Request, res: Response): Promise<vo
         res.status(500).json({message: "Server error", error});
     }
 };
+
+export const excluirFuncionario = async (req: Request, res: Response): Promise<Response> => {
+    try {
+        const { id } = req.params;
+        const funcionario = await funcionarioRepository.findOne({where: {id: parseInt(id)}});
+
+        if(!funcionario){
+            return res.status(404).json({message: "Funcionario não encontrado!"});
+        }
+
+        await funcionarioRepository.remove(funcionario);
+
+        return res.status(200).json({message:"Funcionario excluido com sucesso"});
+    } catch(error){
+        return res.status(500).json({message: "Server error", error});
+    }
+};
+

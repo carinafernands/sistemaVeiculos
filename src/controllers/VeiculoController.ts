@@ -49,3 +49,20 @@ export const buscarVeiculo = async (req: Request, res: Response): Promise<void> 
         res.status(500).json({message: "Server error", error});
     }
 };
+
+export const excluirVeiculo = async (req: Request, res: Response): Promise<Response> => {
+    try{
+        const { id } = req.params;
+        const veiculo = await veiculoRepository.findOne({where: {id: parseInt(id)}});
+    
+        if(!veiculo){
+            return res.status(404).json({message:"Veiculo não encontrado!"});
+        }
+
+        await veiculoRepository.remove(veiculo);
+
+        return res.status(200).json({message:"Veiculo excluido com sucesso!"});
+    } catch(error){
+        return res.status(500).json({message:"Server error", error});
+    }
+};
