@@ -2,6 +2,7 @@ import "reflect-metadata";
 import { DataSource } from "typeorm";
 import { Veiculo } from "./entities/Veiculo";
 import { Funcionario } from "./entities/Funcionario";
+import { Emprestimo } from "./entities/Emprestimo";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -13,9 +14,9 @@ export const AppDataSource = new DataSource({
     username: 'root',
     password: 'root',
     database: 'sistema_veiculos',
-    synchronize: true,
+    synchronize: false,
     logging: true,
-    entities: [Veiculo, Funcionario],
+    entities: [Veiculo, Funcionario, Emprestimo],
     migrations: [],
     subscribers: [],
 });
