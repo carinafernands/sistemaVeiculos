@@ -8,6 +8,6 @@ export class Funcionario{
     @Column()
     nome!: string;
 
-    @Column()
-    matricula!: number;
+    @Column({unique: true })
+    matricula!: string;
 }

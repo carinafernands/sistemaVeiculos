@@ -1,6 +1,7 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
 import { Veiculo } from "./entities/Veiculo";
+import { Funcionario } from "./entities/Funcionario";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -14,7 +15,7 @@ export const AppDataSource = new DataSource({
     database: 'sistema_veiculos',
     synchronize: true,
     logging: true,
-    entities: [Veiculo],
+    entities: [Veiculo, Funcionario],
     migrations: [],
     subscribers: [],
 });
