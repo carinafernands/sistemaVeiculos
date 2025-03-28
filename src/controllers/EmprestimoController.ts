@@ -65,6 +65,10 @@ export class EmprestimoController {
     static async updateStatus(req: Request, res: Response){
         const { id } = req.params;
         const { status } = req.body;
+
+        console.log("id recebido", id);
+        console.log("status recebido", status);
+
         const emprestimoRepo = AppDataSource.getRepository(Emprestimo);
     
         try{
