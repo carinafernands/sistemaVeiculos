@@ -3,9 +3,9 @@ import { buscarVeiculo, cadastrarVeiculo, listarVeiculos, excluirVeiculo } from 
 
 const router = Router();
 
-router.post("/veiculos", cadastrarVeiculo);
-router.get("/veiculos", listarVeiculos);
-router.get("/veiculos/:id", buscarVeiculo);
-router.delete("/veiculos/:id", excluirVeiculo); //funcionando
+router.post("/", cadastrarVeiculo);
+router.get("/", listarVeiculos);
+router.get("/:id", buscarVeiculo);
+router.delete("/:id", excluirVeiculo); //funcionando
 
 export default router;
